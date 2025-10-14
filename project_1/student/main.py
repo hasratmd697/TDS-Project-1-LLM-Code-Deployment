@@ -19,3 +19,7 @@ async def handle_task(data: dict):
     # just return the received data for now
     print(data)
     return {"message": "Task_received", "data": data}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
