@@ -10,7 +10,7 @@ import requests
 def send_task():
     payload = {
         "email": "student@example.com",
-        "secret": "...",
+        "secret": "hussain",
         "task": "captcha-solver-...",
         "round": 1,
         "nonce": "ab12-...",
