@@ -125,16 +125,39 @@ def create_repo_with_pages(repo_name: str, files: list[dict]):
     print("Pushing files...")
     for file in files:
         content = file["content"]
+        path = file["name"]
+        
+        # Base64 encode the content
         if isinstance(content, bytes):
             encoded = base64.b64encode(content).decode("utf-8")
         else:
             encoded = base64.b64encode(str(content).encode("utf-8")).decode("utf-8")
         
-        github_request("PUT", f"/repos/{GITHUB_USERNAME}/{repo_name}/contents/{file['name']}", json={
-            "message": f"Add {file['name']}",
+        # --- START: MODIFIED LOGIC ---
+        
+        # 1. Check if the file already exists to get its SHA
+        current_sha = None
+        try:
+            file_data = github_request("GET", f"/repos/{GITHUB_USERNAME}/{repo_name}/contents/{path}")
+            current_sha = file_data.get("sha")
+        except Exception:
+            # If it throws an error (like 404), the file doesn't exist. That's fine.
+            print(f"File '{path}' not found. Creating it.")
+
+        # 2. Build the payload, including the SHA if it exists
+        payload = {
+            "message": f"Add or update {path}",
             "content": encoded,
-        })
-        print(f"Pushed: {file['name']}")
+        }
+        if current_sha:
+            payload["sha"] = current_sha
+
+        # 3. Make the request to create or update the file
+        github_request("PUT", f"/repos/{GITHUB_USERNAME}/{repo_name}/contents/{path}", json=payload)
+        
+        # --- END: MODIFIED LOGIC ---
+        
+        print(f"Pushed: {path}")
 
 
 def update_repo_files(repo_name: str, files: list[dict]):
