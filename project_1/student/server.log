@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/workspaces/TDS-Project-1-LLM-Code-Deployment/project_1/student/main_2.py", line 16, in <module>
-    from fastapi import FastAPI
-ModuleNotFoundError: No module named 'fastapi'

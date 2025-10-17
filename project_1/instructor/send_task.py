@@ -11,7 +11,7 @@ def send_task():
     payload = {
         "email": "student@example.com",
         "secret": "hussain",
-        "task": "captcha-solver2-...",
+        "task": "captcha-solver3-...",
         "round": 1,
         "nonce": "ab12-...",
         "brief": "Create a captcha solver that handles ?url=https://.../image.png. Default to attached sample.",
