@@ -1,6 +1,6 @@
 # Describe2Deploy
 
-> 🚀 An automated tool that turns natural language descriptions into deployed web applications on GitHub Pages
+> 🚀 An automated tool that turns natural language descriptions into deployed web pages on GitHub Pages
 
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green.svg)](https://fastapi.tiangolo.com/)
@@ -8,7 +8,7 @@
 
 ## Overview
 
-This project is a FastAPI server that accepts natural language descriptions of web applications, uses **GPT-4o-mini** (via AIPIPE) to generate complete HTML/CSS/JS code, and automatically deploys them to GitHub Pages.
+This project is a FastAPI server that accepts natural language descriptions of web pages, uses **GPT-4o-mini** (via AIPIPE) to generate complete HTML/CSS/JS code, and automatically deploys them to GitHub Pages.
 
 **Workflow:** Describe what you want → AI generates code → Auto-deploys to GitHub Pages ⚡
 
